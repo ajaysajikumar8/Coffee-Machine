@@ -8,6 +8,8 @@ The payment is done through coins. The cost of each type of coffee is given belo
 * Latte: $2.5,
 * cappuccino: $3.0.
 
+    Remember that quarters = $0.25, dimes = $0.10, nickles = $0.05, pennies = $0.01
+
 If the user has inserted too much money, the machine should offer change.
 E.g.
 
@@ -25,3 +27,9 @@ E.g. if Latte requires 200ml water but there is only 100ml left in the machine. 
 not continue to make the drink but print:
 
     “Sorry there is not enough water.”
+
+For maintainers of the coffee machine, they can use “off” as the secret word to turn off the machine.
+
+Run the program by cloning the repo to your computer. Open command prompt in the file location. Type:
+
+>python main.py
