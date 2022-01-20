@@ -1,85 +1,66 @@
-
-MENU = {
-    "espresso": {
-        "ingredients": {
-            "water": 50,
-            "coffee": 18,
-        },
-        "cost": 1.5,
-    },
-    "latte": {
-        "ingredients": {
-            "water": 200,
-            "milk": 150,
-            "coffee": 24,
-        },
-        "cost": 2.5,
-    },
-    "cappuccino": {
-        "ingredients": {
-            "water": 250,
-            "milk": 100,
-            "coffee": 24,
-        },
-        "cost": 3.0,
-    }
-}
-
-profit = 0
-resources = {
-    "water": 300,
-    "milk": 200,
-    "coffee": 100,
-}
+from data import MENU, resources, profit
+from art import logo
 
 
+def make_coffee(water, milk, coffee, resources):
+    resources["water"] -= water
+    resources["milk"] -= milk
+    resources["coffee"] -= coffee
 
-money = 0 
-
-#Ask the user input for what they would like to have?
-user_choice = input("What would you like? (espresso/latte/cappuccino): ")
-
-#check what the user input was and then further execute
-for x in MENU:
-    if user_choice == x:
-        water = MENU[x]["ingredients"]["water"]
-        milk = MENU[x]["ingredients"]["milk"]
-        coffee = MENU[x]["ingredients"]["coffee"]
-        cost = MENU[x]["cost"]
-        print(water, milk, coffee, cost)
 
 def calculate_money(quarters, dimes, nickels, pennies):
-    user_paid = (quarters * 0.25) + (dimes * 0.1) + (nickels * 0.05) + (pennies * 0.01)
-    if user_paid < cost:
-        print("Sorry that's not enough money. Money refunded.")
-    elif user_paid >= cost:
-        change = user_paid - cost
-        print(change)
-    
+        user_paid = (quarters * 0.25) + (dimes * 0.1) + (nickels * 0.05) + (pennies * 0.01)
+        if user_paid < cost:
+            print("Sorry that's not enough money. Money refunded.")
+            return 0
+        elif user_paid >= cost:
+            change = user_paid - cost
+            make_coffee(water, milk, coffee, resources)
+            print(f"Here is ${change} in change.")
+            print("Here is your latte ☕️. Enjoy!")
+            return cost
 
 
-#check if there are resources to make what the user wants.
+def check_resources(user_input):
+    for x in MENU:
+        if user_input == x:
+            if resources["water"] < MENU[x]["ingredients"]["water"]:
+                return "“Sorry there is not enough water."
+            elif resources["milk"] < MENU[x]["ingredients"]["milk"]:
+                return "“Sorry there is not enough milk."
+            elif resources["coffee"] < MENU[x]["ingredients"]["coffee"]:
+                return "Sorry there is not enough milk."
+            else:
+                return 0
 
-#if there are sufficient resources then ask the user for moeny
 
-#ask the user how they want to pay (for eg: how many quarters, nickels, dimes, pennies etc)
-print("Please insert coins.")
-quarters = int(input("How many quarters?: "))
-dimes = int(input("How many dimes?: "))
-nickels = int(input("How many nickels?: "))
-pennies = int(input("How many pennies?: "))
-calculate_money(quarters, dimes, nickels, pennies)
-
-#calculate the monetary value of the coins inserted. (make a function)
-
-    
-
-#count the money
-    #if insufficient balance return the money
-    #return the balance
-
-#provide an off switch to turn off the machine
-
-#the amount of resources required to make the coffee should be reduced from the main resources
-
-#after resources are deducted and tell the user that your coffee is made. 
+machine_running = True
+while machine_running:
+    print(logo)
+    user_choice = input("What would you like? (espresso/latte/cappuccino): ")
+    if user_choice == "off":
+        machine_running = False
+    elif user_choice == "report":
+        print(f"Water: {resources['water']}ml")
+        print(f"Milk: {resources['milk']}ml")
+        print(f"Coffee: {resources['coffee']}g")
+        print(f"Money: ${profit}")
+    else:
+        resources_check = check_resources(user_choice)
+        for x in MENU:
+            if user_choice == x:
+                water = MENU[x]["ingredients"]["water"]
+                milk = MENU[x]["ingredients"]["milk"]
+                coffee = MENU[x]["ingredients"]["coffee"]
+                cost = MENU[x]["cost"]
+                
+        if resources_check == 0:
+            print("Please insert coins.")
+            quarters = int(input("How many quarters?: "))
+            dimes = int(input("How many dimes?: "))
+            nickels = int(input("How many nickels?: "))
+            pennies = int(input("How many pennies?: "))
+            money = calculate_money(quarters, dimes, nickels, pennies)
+            profit += money
+        else:
+            print(resources_check)
