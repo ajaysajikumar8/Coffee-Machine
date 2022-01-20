@@ -8,7 +8,7 @@ The payment is done through coins. The cost of each type of coffee is given belo
 * Latte: $2.5,
 * cappuccino: $3.0.
 
-    Remember that quarters = $0.25, dimes = $0.10, nickles = $0.05, pennies = $0.01
+Remember that quarters = $0.25, dimes = $0.10, nickles = $0.05, pennies = $0.01
 
 If the user has inserted too much money, the machine should offer change.
 E.g.
