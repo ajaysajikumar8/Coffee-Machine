@@ -8,6 +8,11 @@ The payment is done through coins. The cost of each type of coffee is given belo
 * Latte: $2.5,
 * cappuccino: $3.0.
 
+If the user has inserted too much money, the machine should offer change.
+E.g.
+
+    “Here is $2.45 dollars in change.” 
+
 When the user enters “report” to the prompt, a report should be generated that shows the current resource values. e.g.
 
     Water: 100ml
