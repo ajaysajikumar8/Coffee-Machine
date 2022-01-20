@@ -4,7 +4,7 @@ This is a virtual coffee maker. There are three types of coffee for you: Latte, 
 
 The payment is done through coins. The cost of each type of coffee is given below:
 
-*Espresso: $1.5,
-*Latte: $2.5,
-*cappuccino: $3.0.
+* Espresso: $1.5,
+* Latte: $2.5,
+* cappuccino: $3.0.
 
