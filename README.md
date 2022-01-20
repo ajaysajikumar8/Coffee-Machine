@@ -10,7 +10,7 @@ The payment is done through coins. The cost of each type of coffee is given belo
 
 When the user enters “report” to the prompt, a report should be generated that shows the current resource values. e.g.
 
->Water: 100ml &nbsp
->Milk: 50ml &nbsp
->Coffee: 76g &nbsp
->Money: $2.5 &nbsp
+    Water: 100ml
+    Milk: 50ml
+    Coffee: 76g
+    Money: $2.5
