@@ -18,4 +18,5 @@ When the user enters “report” to the prompt, a report should be generated th
 When the user chooses a drink, the program should check if there are enough resources to make that drink.
 E.g. if Latte requires 200ml water but there is only 100ml left in the machine. It should
 not continue to make the drink but print:
+
     “Sorry there is not enough water.”
